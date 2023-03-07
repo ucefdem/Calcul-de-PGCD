@@ -1,0 +1,236 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+
+:root {
+  --main-color: #26c0ab;
+  --main-color-dark: #00494d;
+  --main-color-gray: #5e7a7d;
+  --main-color-gray2: #7f9c9f;
+  --main-color-light: #c5e4e7;
+  --main-color-light2: #efeff5;
+}
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  background-color: var(--main-color-light);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 1.5rem;
+  min-width: 360px;
+}
+
+.logo {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: 1.05rem;
+  color: var(--main-color-dark);
+  text-align: center;
+}
+
+.content {
+  background-color: #fff;
+  max-width: 500px;
+  width: 100%;
+  padding: 3.6rem 4rem;
+  margin: 4rem 0 1rem;
+  border-radius: 32px;
+  box-shadow: 0 10px 100px -1px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 1.85rem;
+  color: var(--main-color-dark);
+  text-align: center;
+  line-height: 1;
+}
+
+.num-wrap {
+  margin: 2rem 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.num-wrap .label {
+  margin-bottom: 0.7rem;
+  width: 100%;
+  color: var(--main-color-gray2);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.num-input {
+  border: none;
+  background: none;
+  outline: none;
+  background-color: #f3f0f4;
+  width: 100%;
+  line-height: 46px;
+  border-radius: 40px;
+  padding: 0.1rem 1.4rem;
+  font-size: 1rem;
+  width: 100%;
+  font-family: inherit;
+  font-weight: 700;
+  color: var(--main-color-dark);
+  border: 2px solid transparent;
+  transition: 0.3s;
+}
+
+.num-input::placeholder {
+  font-weight: 400;
+  font-size: 0.85rem;
+  opacity: 0.4;
+}
+
+.num-input:hover {
+  background-color: #ededed;
+}
+
+.num-input:focus {
+  background-color: #fff;
+  border: 2px solid var(--main-color);
+}
+
+.btn.btn-dark {
+  background-color: var(--main-color-dark);
+  margin-top: 1.4rem;
+}
+
+.btn {
+  display: block;
+  padding: 0.7rem 1.3rem;
+  border-radius: 2rem;
+  margin: 0 auto;
+  background-color: var(--main-color);
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  font-family: inherit;
+  font-size: 1rem;
+  text-align: center;
+  min-width: 160px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+a.btn {
+  position: fixed;
+  top: 0rem;
+  right: 1.5rem;
+}
+
+.btn span {
+  margin-left: 6px;
+}
+
+.btn:hover {
+  transform: scale(1.03);
+}
+
+.modal-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgb(0 0 0 / 65%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  padding: 2rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.modal {
+  background-color: #fff;
+  border-radius: 32px;
+  box-shadow: 0 0px 30px 0px rgba(0, 0, 0, 0.3);
+  max-width: 450px;
+  width: 100%;
+  padding: 3.5rem 1.5rem;
+  transform: scale(0.6);
+  transition: transform 0.3s;
+}
+
+.modal-container.showModal {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal-container.showModal .modal {
+  transform: scale(1);
+}
+
+.modal .message {
+  margin-bottom: 1.5rem;
+  font-size: 1.85rem;
+  color: var(--main-color-dark);
+  text-align: center;
+  line-height: 1;
+}
+
+.modal .text {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  color: var(--main-color-gray2);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.result {
+  width: 100%;
+  border-radius: 8px;
+  color: var(--main-color-dark);
+  font-size: 1.7rem;
+  margin-bottom: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.content .btn[disabled] {
+  filter: grayscale(100%);
+  cursor: not-allowed;
+  transform: scale(1) !important;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+@media (max-width: 500px) {
+  .content {
+    padding: 3rem 2.5rem;
+  }
+}
+
+.copyright {
+  margin-top: auto;
+  width: 100%;
+  color: var(--main-color-gray2);
+  opacity: 0.7;
+}
