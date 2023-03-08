@@ -2,6 +2,7 @@ const numInputs = document.querySelectorAll(".num-input"),
   modal = document.querySelector(".modal-container"),
   result = document.querySelector(".result"),
   returnBtn = document.querySelector(".returnBtn"),
+  modalOverlay = document.querySelector(".overlay"),
   calculateBtn = document.querySelector(".content .btn");
 
 let num1, num2;
@@ -25,13 +26,13 @@ function PGCD(a, b) {
   } else if (b === 0) {
     return `= ${0}`;
   } else {
-    let a_diviser = [a, b];
-    let resultat;
+    let suite = [a, b];
+    let reste;
     do {
-      resultat = a_diviser.at(-2) % a_diviser.at(-1);
-      a_diviser.push(resultat);
-    } while (resultat > 0);
-    return `= ${a_diviser.at(-2)}`;
+      reste = suite.at(-2) % suite.at(-1);
+      suite.push(reste);
+    } while (reste > 0);
+    return `= ${suite.at(-2)}`;
   }
 }
 
@@ -46,8 +47,11 @@ calculateBtn.addEventListener("click", () => {
   result.innerHTML = `PGCD(${num1}, ${num2}) ${PGCD(num1, num2)}`;
 });
 
-returnBtn.addEventListener("click", () => {
+let hideModal = () => {
   modal.classList.remove("showModal");
   numInputs.forEach((int) => (int.value = ""));
   calculateBtn.disabled = true;
-});
+};
+
+returnBtn.addEventListener("click", hideModal);
+modalOverlay.addEventListener("click", hideModal);
