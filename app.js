@@ -10,7 +10,7 @@ let num1, num2;
 numInputs.forEach((inp) =>
   inp.addEventListener("keyup", () => {
     if (
-      Array.from(numInputs).filter((it) => it.value != "").length <
+      Array.from(numInputs).filter((it) => Boolean(+it.value)).length <
       numInputs.length
     ) {
       calculateBtn.disabled = true;
@@ -21,19 +21,13 @@ numInputs.forEach((inp) =>
 );
 
 function PGCD(a, b) {
-  if (b === 0 && a === 0) {
-    return "n'est pas défini !";
-  } else if (b === 0) {
-    return `= ${0}`;
-  } else {
-    let suite = [a, b];
-    let reste;
-    do {
-      reste = suite.at(-2) % suite.at(-1);
-      suite.push(reste);
-    } while (reste > 0);
-    return `= ${suite.at(-2)}`;
-  }
+  let suite = [a, b];
+  let reste;
+  do {
+    reste = suite.at(-2) % suite.at(-1);
+    suite.push(reste);
+  } while (reste > 0);
+  return suite.at(-2);
 }
 
 calculateBtn.addEventListener("click", () => {
@@ -44,7 +38,10 @@ calculateBtn.addEventListener("click", () => {
 
   modal.classList.add("showModal");
 
-  result.innerHTML = `PGCD(${num1}, ${num2}) ${PGCD(num1, num2)}`;
+  result.innerHTML = `<h4>PGCD(${num1}, ${num2})</h4> <h3>= ${PGCD(
+    num1,
+    num2
+  )}</h3>`;
 });
 
 let hideModal = () => {
